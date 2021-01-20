@@ -1,7 +1,7 @@
 " Vim syntax file
 " Language: BlitzMax NG
 " Maintainer: @Hezkore
-" Last Change: 20 Jan, 2021
+" Last Change: 2021
 
 if version < 600
 	syntax clear
