@@ -11,16 +11,23 @@ endif
 
 syntax case ignore
 
-" This needs to support 'End Rem' as well
-syn region bmxComment start="rem$" end="endrem"
-syn region bmxComment start="'" end="$"
+" Comments
+syn region	bmxComment start="^\s*Rem\(\s\+\w*\|$\)" end="^\s*End\s*Rem\s*$"
+syn region	bmxComment start="'" end="$"
 
-syn match bmxSyntax "\b(End\s*?Function|End\s*?Type|End\s*?If|Else\s*?If)"
-syn keyword bmxSyntax Strict SuperStrict Public Private Int Float Long Double String Mod Continue Include Import Extern New Self Null Super EachIn True False Not Extends Abstract Select Case Default Const Local Global Field Method Function Type And Or Shl Shr End If Then Else While Wend Repeat Until Forever For To Step Next Return Module Implements
+" Keywords
+syn match	bmxSyntax "^\s*End\s*\(If\|Type\|Function\|Method\|Struct\)\s*$"
+syn keyword bmxSyntax Strict SuperStrict Public Private Mod Continue Include Import Extern New Self Null Super EachIn True False Not Extends Abstract Select Case Default Const Local Global Field Method Function Type And Or Shl Shr End If Then Else While Wend Repeat Until Forever For To Step Next Return Module Implements
 syn keyword bmxPreprocessor #if #else #endif
 
-syn match	bmxTypeSpecifier "[<>+\*^/\\=-]"
-"syn match	bmxTypeSpecifier "-\|=\|[:<>+\*^/\\]\|AND\|OR"
+" Functions
+syn match	bmxFunc "\w*\s*\(\:\s*\w\+\s*(\|(\)\@="
+
+" Types
+syn match	bmxTypeSpecifier "\w*\(\:\s*\)\@<=\(\w\+\)"
+syn match	bmxTypeSpecifier "\(^\s*Type\s*\)\@<=\w\+"
+
+syn match	bmxSyntax "\(\.\|,\|\:\|=\|+\|-\|*\|/\|\~\|\^\)"
 
 syn match	bmxNumber "\<\d\+\>"
 syn match	bmxNumber "\<\d\+\.\d*\>"
@@ -31,8 +38,6 @@ syn region	bmxStruc matchgroup=Delimiter start="\[" matchgroup=Delimiter end="\]
 
 syn match	bmxSpecial contained "\\\d\d\d\|\\."
 syn region	bmxString start=+"+ skip=+\\\\\|\\"+ end=+"+ contains=bmxSpecial
-
-syn match	bmxTypeSpecifier "[a-zA-Z0-9][\$%&!#]"ms=s+1
 
 if version >= 508 || !exists("did_bmx_syntax_inits")
 	
@@ -50,7 +55,7 @@ if version >= 508 || !exists("did_bmx_syntax_inits")
 	
 	HiLink bmxConstant		Constant
 	
-	HiLink bmxMath			Identifier
+	HiLink bmxIdent			Identifier
 	
 	HiLink bmxComment		Comment
 	HiLink bmxSpecial		Special
