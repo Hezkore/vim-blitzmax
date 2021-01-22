@@ -12,5 +12,8 @@ if exists(':CompilerSet') != 2
   command -nargs=* CompilerSet setlocal <args>
 endif
 
-CompilerSet makeprg=bmk\ makeapp\ -d\ -t\ console\ -w\ -x\ %
-CompilerSet errorformat=%+P[%f],(%l\\,%c)%*[\ ]%t%*[^:]:\ %m,%-Q
+CompilerSet makeprg=bmk\ $*
+CompilerSet errorformat=
+	\%ACompile\ \%t%\\w%\\+\:\ \%m,
+	\%C\[\%f\;\%l\;\%c\],\%Z,
+	\%-G\%.\%#

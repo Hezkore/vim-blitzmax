@@ -73,3 +73,15 @@ let b:current_syntax = "blitzmax"
 
 " Auto select compiler
 compiler bmx
+
+" Shortcut to build & execute a debug build
+nnoremap <F5> :make makeapp -d -t console -w -a -x -o %<.debug %<CR>
+
+" Shortcut to build & execute a release build
+nnoremap <F6> :make makeapp -r -t console -w -x %<CR>
+
+" Shortcut to build a debug build
+nnoremap <F7> :make makeapp -d -t console -w -o %<.debug %<CR>
+
+" Shortcut to build a release build
+nnoremap <F8> :make makeapp -r -t console -w %<CR>
