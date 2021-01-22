@@ -1,15 +1,15 @@
-# BlitzMax-VIM
+# BlitzMax for Vim
 
 [Vim](https://www.vim.org) plugin that provides syntax highlighting, indentation, error matching and compiler options for [BlitzMax](https://blitzmax.org).
 
 ## Installation
-* Download or Git Clone to `~/.vim/` on Unix or `%USERPROFILE%\vimfiles\` on Windows
-* Add `let $PATH .= ':<Your BlitzMax Dir>/bin` to your `vimrc` file
-  * _You may have to create the `vimrc` file manually in `~/.vim/` on Unix or `%USERPROFILE%\vimfiles\` on Windows_
+* Navigate to `~/.vim/` on Unix or `%USERPROFILE%\vimfiles\` on Windows
+  * Download and extract or Git clone
+  * Open or create the `vimrc` file and add `let $PATH .= ':<Your BlitzMax Dir>/bin`
 
 ## Learning Vim
 Install [Vim](https://www.vim.org/download.php) and run the [vimtutor](https://vimhelp.org/usr_01.txt.html#vimtutor). \
-Alternatively you can read the online documentations at [vimhelp.org](https://vimhelp.org/)
+Alternatively you can read the online documentations at [vimhelp.org](https://vimhelp.org/).
 
 ## Basic usage
 Open any `.bmx` file and press one of the shortcut keys in [normal mode](https://vimhelp.org/usr_02.txt.html#02.2) to build your executable.
