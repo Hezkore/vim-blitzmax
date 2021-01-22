@@ -1,7 +1,7 @@
 " Vim syntax file
-" Language: BlitzMax NG
-" Maintainer: @Hezkore
-" Last Change: 2021
+" Language:		BlitzMax NG
+" Maintainer:	@Hezkore
+" Last Change:	2021
 
 if version < 600
 	syntax clear
@@ -70,3 +70,6 @@ if version >= 508 || !exists("did_bmx_syntax_inits")
 endif
 
 let b:current_syntax = "blitzmax"
+
+" Auto select compiler
+compiler bmx
