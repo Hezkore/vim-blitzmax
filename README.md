@@ -1,6 +1,6 @@
 # BlitzMax-VIM
 
-[Vim](https://www.vim.org) plugin that provides syntax highlighting, error matching and compiler options for [BlitzMax](https://blitzmax.org).
+[Vim](https://www.vim.org) plugin that provides syntax highlighting, indentation, error matching and compiler options for [BlitzMax](https://blitzmax.org).
 
 ## Installation
 * Download or Git Clone to `~/.vim/` on Unix or `%USERPROFILE%\vimfiles\` on Windows
