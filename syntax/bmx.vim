@@ -17,7 +17,7 @@ syn region	bmxComment start="'" end="$"
 
 " Keywords
 syn match	bmxSyntax "^\s*End\s*\(If\|Type\|Function\|Method\|Struct\|Select\)\s*$"
-syn keyword	bmxSyntax Strict SuperStrict Public Private Var Mod Continue Incbin Framework Include Import Extern New Self Null Super EachIn True False Not Extends Abstract Select Case Default Const Local Global Field Method Function Type And Or Shl Shr End If Then Else While Wend Repeat Until Forever For To Step Next Return Module Implements
+syn keyword	bmxSyntax Strict SuperStrict Public Private Var Mod Continue Incbin Framework Include Import Extern New Self Null Super EachIn True False Not Extends Abstract Select Case Default Const Local Global Field Method Function Type And Or Shl Shr End If Then Else ElseIf While Wend Repeat Until Forever For To Step Next Return Module Implements
 
 " Preprocessors
 syn match	bmxPreprocessor "^\s*?.*"

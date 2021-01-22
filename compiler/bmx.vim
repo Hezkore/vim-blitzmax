@@ -1,4 +1,4 @@
-" Vim syntax file
+" Vim compiler file
 " Language:		BlitzMax NG
 " Maintainer:	@Hezkore
 " Last Change:	2021
