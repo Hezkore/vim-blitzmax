@@ -7,6 +7,7 @@
 | ------------- | ------
 | Vim 8 package | `git clone https://github.com/Hezkore/vim-blitzmax-support ~/.vim/pack/hezkore/start/bmx`
 | Manual        | Copy files to `~/.vim/` on Unix or `%USERPROFILE%\vimfiles\` on Windows
+
 Remember to open or create the `vimrc` file in `~/.vim/` on Unix or `%USERPROFILE%\vimfiles\` on Windows and add `let $PATH .= ':<Your BlitzMax Dir>/bin`.
 
 ## Learning Vim
