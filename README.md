@@ -3,9 +3,11 @@
 [Vim](https://www.vim.org) plugin that provides syntax highlighting, indentation, error matching and compiler options for [BlitzMax](https://blitzmax.org).
 
 ## Installation
-* Navigate to `~/.vim/` on Unix or `%USERPROFILE%\vimfiles\` on Windows
-  * Download and extract or Git clone
-  * Open or create the `vimrc` file and add `let $PATH .= ':<Your BlitzMax Dir>/bin`
+| Method        | Instructions
+| ------------- | ------
+| Vim 8 package | `git clone https://github.com/Hezkore/vim-blitzmax-support ~/.vim/pack/hezkore/start/bmx`
+| Manual        | Copy files to `~/.vim/` on Unix or `%USERPROFILE%\vimfiles\` on Windows
+Remember to open or create the `vimrc` file in `~/.vim/` on Unix or `%USERPROFILE%\vimfiles\` on Windows and add `let $PATH .= ':<Your BlitzMax Dir>/bin`.
 
 ## Learning Vim
 Install [Vim](https://www.vim.org/download.php) and run the [vimtutor](https://vimhelp.org/usr_01.txt.html#vimtutor). \
