@@ -1,0 +1,8 @@
+--langdef=blitzmax
+--langmap=blitzmax:.bmx
+--regex-blitzmax=/^[ \t]*Type[ \t]*([a-zA-Z0-9_]+)/\1/t,types/,i
+--regex-blitzmax=/^[ \t]*Field[ \t]*([a-zA-Z0-9_]+)/\1/f,fields/,i
+--regex-blitzmax=/^[ \t]*Global[ \t]*([a-zA-Z0-9_]+)/\1/g,globals/,i
+--regex-blitzmax=/^[ \t]*Const[ \t]*([a-zA-Z0-9_]+)/\1/y,constants/,i
+--regex-blitzmax=/^[ \t]*Method[ \t]*([a-zA-Z0-9_]+)/\1/m,methods/,i
+--regex-blitzmax=/^[ \t]*Function[ \t]*([a-zA-Z0-9_]+)/\1/x,functions/,i

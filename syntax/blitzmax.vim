@@ -71,9 +71,6 @@ endif
 
 let b:current_syntax = "blitzmax"
 
-" Auto select compiler
-compiler bmx
-
 " Shortcut to build & execute a debug build
 nnoremap <F5> :make makeapp -d -t console -w -a -x -o %<.debug %<CR>
 
