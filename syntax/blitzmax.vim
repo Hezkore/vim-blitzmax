@@ -4,19 +4,15 @@
 " Last Change:	2021
 
 " Quit when a syntax file was already loaded
-"if exists("b:current_syntax")
-"  finish
-
-"endif
+if exists("b:current_syntax")
+  finish
+endif
 
 " Setup
 let s:cpo_save = &cpo
 set cpo&vim
 
-syntax clear
-
 syn case ignore
-
 
 " Syntax
 
