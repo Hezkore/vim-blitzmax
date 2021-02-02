@@ -18,7 +18,8 @@ Install [Vim](https://www.vim.org/download.php) and run the [vimtutor](https://v
 Alternatively you can read the online documentations at [vimhelp.org](https://vimhelp.org/).
 
 ## Compiling
-Use the command `:make <operation> [options]` to build your executable. For example `:make makeapp %`.
+Use the command `:make <operation> [options]` to build your executable. \
+For example `:make makeapp %`.
 
 
 Or something more advanced `:make makeapp -d -t console -w -a -x -o %<.debug %` \
