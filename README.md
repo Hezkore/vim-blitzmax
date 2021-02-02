@@ -1,5 +1,7 @@
 # BlitzMax for Vim
 
+![Title Image](https://github.com/Hezkore/vim-blitzmax-support/blob/master/demo.png)
+
 [Vim](https://www.vim.org) plugin that provides syntax highlighting, indentation, error matching and compiler options for [BlitzMax](https://blitzmax.org).
 
 ## Installation

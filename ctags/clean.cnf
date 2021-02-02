@@ -1,0 +1,11 @@
+--langdef=blitzmax
+--langmap=blitzmax:.bmx
+--regex-blitzmax=/^\s*Type\s+([a-zA-Z0-9_]+)/\1/t,Type/,i
+--regex-blitzmax=/^\s*Struct\s+([a-zA-Z0-9_]+)/\1/s,Struct/,i
+--regex-blitzmax=/^\s*Enum\s+([a-zA-Z0-9_]+)/\1/e,Enum/,i
+--regex-blitzmax=/^\s*Const\s+([a-zA-Z0-9_]+)/\1/c,Constants/,i
+--regex-blitzmax=/^\s*Global\s+([a-zA-Z0-9_]+)/\1/g,Globals/,i
+--regex-blitzmax=/^\s*Field\s+([a-zA-Z0-9_]+)/\1/i,Fields/,i
+--regex-blitzmax=/^\s*Method\s+([a-zA-Z0-9_]+)/\1/m,Method/,i
+--regex-blitzmax=/^\s*Function\s+([a-zA-Z0-9_]+)/\1/f,Function/,i
+--regex-blitzmax=/^\s*End\s*(Type|Struct|Enum|Function|Method)\s*//,i
