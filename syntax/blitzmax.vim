@@ -5,7 +5,7 @@
 
 " Quit when a syntax file was already loaded
 if exists("b:current_syntax")
-  finish
+	finish
 endif
 
 " Setup
@@ -35,14 +35,11 @@ syn match bmxConstant '^\s*\<const\>'
 " String			a string constant: "this is a string"
 syn region bmxString start='"' end='"' contains=bmxUnderlined
 
-" Character			a character constant: 'c', '\n'
-"syn match bmxCharacter '~\(q\|n\|r\|t\)'
-
 " Number			a number constant: 234, 0xff
 syn match bmxNumber '\<\(\.\)\@<!\d\+\(\.\)\@!\>'
 
 " Boolean			a boolean constant: TRUE, false
-syn match bmxBoolean '\<\(true\|\false\)\>'
+syn match bmxBoolean '\<\(true\|false\)\>'
 
 " Float				a floating point constant: 2.3e10
 syn match bmxFloat '\<\d\+\.\d*\>'
@@ -108,7 +105,7 @@ syn match bmxComment "'.*" contains=bmxTodo,bmxUnderlined
 syn region bmxComment start="^\s*Rem\(\s\+\w*\|$\)" end="^\s*End\s*Rem\>" contains=bmxTodo,bmxUnderlined
 
 " SpecialComment	special things inside a comment
-" what skin even highlight 'SpecialComment'?!
+" what skin even highlights 'SpecialComment'?!
 " let's just use Todo instead...
 syn match bmxTodo '\(\(^\|\'\)\s*\)\@<=\w\+:'me=e-1 contained
 
@@ -120,7 +117,10 @@ syn keyword bmxDebug DebugStop DebugLog RuntimeError Assert
 " Error				any erroneous construct
 
 " Todo				anything that needs extra attention; mostly the keywords TODO FIXME and XXX
-syn match bmxTodo '\<\(TODO\|BUG\|FIXME\)\>'
+syn match bmxTodo '\<\(TODO\|BUG\|FIXME\|XXX\)\>' contained
+
+" Character			a character constant: 'c', '\n'
+syn match bmxCharacter '\~\(q\|t\|n\|r\)'
 
 " Default highlighting
 hi def link bmxConstant			Constant
@@ -165,4 +165,5 @@ let b:current_syntax = "bmx"
 
 let &cpo = s:cpo_save
 unlet s:cpo_save
+
 " vim: ts=8
