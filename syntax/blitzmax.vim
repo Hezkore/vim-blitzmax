@@ -3,82 +3,170 @@
 " Maintainer:	@Hezkore
 " Last Change:	2021
 
-if version < 600
-	syntax clear
-elseif exists("b:current_syntax")
-	finish
-endif
+" Quit when a syntax file was already loaded
+"if exists("b:current_syntax")
+"  finish
 
-syntax case ignore
+"endif
 
-" Comments
-syn region	bmxComment start="^\s*Rem\(\s\+\w*\|$\)" end="^\s*End\s*Rem\s*$"
-syn region	bmxComment start="'" end="$"
+" Setup
+let s:cpo_save = &cpo
+set cpo&vim
 
-" Keywords
-syn match	bmxSyntax "^\s*End\s*\(If\|Type\|Function\|Method\|Struct\|Select\)\s*$"
-syn keyword	bmxSyntax Strict SuperStrict Public Private Var Mod Continue Incbin Framework Include Import Extern New Self Null Super EachIn True False Not Extends Abstract Select Case Default Const Local Global Field Method Function Type And Or Shl Shr End If Then Else ElseIf While Wend Repeat Until Forever For To Step Next Return Module Implements
+syntax clear
 
-" Preprocessors
-syn match	bmxPreprocessor "^\s*?.*"
+syn case ignore
 
-" Functions
-syn match	bmxFunc "\(New\s\+\w*\)\@<!\w*\s*\(\(\:\s*\w\+\|%\|#\|!\|\$\)\s*(\|(\)\@="
 
-" Types
-syn match	bmxTypeSpecifier "\w*\(\:\s*\)\@<=\(\w\+\)"
-syn match	bmxTypeSpecifier "\(^\s*Type\s*\)\@<=\w\+"
-syn match	bmxTypeSpecifier "\(\:\)\@<!\(\w\+\)\@<=\s*\(%\|#\|!\|\$\)"
-syn match	bmxTypeSpecifier "\(New\|Implements\|Extends\)\@<=\s\+\w*"
+" Syntax
 
-syn match	bmxSyntax "\(\.\|,\|\:\|=\|+\|-\|*\|/\|\~\|\^\|<\|>\)"
+" Keyword			any other keyword
+syn keyword bmxKeyword New AppTitle
+syn match bmxKeyword '\<\(Implement\|Extends\|End\|Local\|Global\|Field\|Strict\|SuperStrict\|Public\|Private\|Return\|Module\|ModuleInfo\)\>'
+syn match bmxKeyword '^\s*#'
+" should we separate these?
+" I feel like that's overkill but this will have matching errors
+"syn match bmxKeywordError '\<\(Function\|Method\|Type\|Struct\|Enum\|Extern\)\>'
+"syn match bmxKeywordError '\<End\s*\(Function\|Method\|Type\|Struct\|Enum\|Extern\)\>'
+"syn region bmxKeywordContainer transparent start='^\s*\(Function\|Method\|Type\|Struct\|Enum\|Extern\)\>' end='^\s*End\s*\(Function\|Method\|Type\|Struct\|Enum\|Extern\)\s*$' contains=ALLBUT,bmxKeywordError
+syn match bmxKeyword '^\s*\(Function\|Method\|Type\|Struct\|Enum\|Extern\)\>'
+syn match bmxKeyword '^\s*End\s*\(Function\|Method\|Type\|Struct\|Enum\|Extern\)\s*$'
 
-syn match	bmxNumber "\<\d\+\>"
-syn match	bmxNumber "\<\d\+\.\d*\>"
-syn match	bmxNumber "\.\d\+\>"
+" Constant			any constant
+syn keyword bmxConstant Null Super Self
+syn match bmxConstant '^\s*\<const\>'
 
-syn region	bmxStruc matchgroup=Delimiter start="("	matchgroup=Delimiter end=")" contains=ALL
-syn region	bmxStruc matchgroup=Delimiter start="\[" matchgroup=Delimiter end="\]" contains=ALL
+" String			a string constant: "this is a string"
+syn region bmxString start='"' end='"' contains=bmxUnderlined
 
-syn match	bmxSpecial contained "\\\d\d\d\|\\."
-syn region	bmxString start=+"+ skip=+\\\\\|\\"+ end=+"+ contains=bmxSpecial
+" Character			a character constant: 'c', '\n'
+"syn match bmxCharacter '~\(q\|n\|r\|t\)'
 
-if version >= 508 || !exists("did_bmx_syntax_inits")
-	
-	if version < 508
-		let did_bmx_syntax_inits = 1
-		command -nargs=+ HiLink hi link <args>
-	else
-		command -nargs=+ HiLink hi def link <args>
-	endif
-	
-	HiLink bmxSyntax		Statement
-	HiLink bmxFunc			Function
-	HiLink bmxString		String
-	HiLink bmxNumber		Number
-	
-	HiLink bmxConstant		Constant
-	
-	HiLink bmxIdent			Identifier
-	
-	HiLink bmxComment		Comment
-	HiLink bmxSpecial		Special
-	HiLink bmxPreprocessor	PreProc
-	HiLink bmxTypeSpecifier	Type
-	
-	delcommand HiLink
-endif
+" Number			a number constant: 234, 0xff
+syn match bmxNumber '\<\(\.\)\@<!\d\+\(\.\)\@!\>'
 
-let b:current_syntax = "blitzmax"
+" Boolean			a boolean constant: TRUE, false
+syn match bmxBoolean '\<\(true\|\false\)\>'
 
-" Shortcut to build & execute a debug build
-nnoremap <F5> :make makeapp -d -t console -w -a -x -o %<.debug %<CR>
+" Float				a floating point constant: 2.3e10
+syn match bmxFloat '\<\d\+\.\d*\>'
+" FIX can't figure out why the period isn't matched
+" "\.\d\+\>" doesn't seem to work either
+syn match bmxFloat '\(\.\)\@<=\d\+\>'
 
-" Shortcut to build & execute a release build
-nnoremap <F6> :make makeapp -r -t console -w -x %<CR>
+" Identifier		any variable name
 
-" Shortcut to build a debug build
-nnoremap <F7> :make makeapp -d -t console -w -o %<.debug %<CR>
+" Function			function name (also: methods for classes)
+syn match bmxFunction "\(New\s\+\w*\)\@<!\w*\s*\(\(\:\s*\w\+\|%\|#\|!\|\$\)\s*(\|(\)\@="
 
-" Shortcut to build a release build
-nnoremap <F8> :make makeapp -r -t console -w %<CR>
+" Statement			any statement
+
+" Conditional		if, then, else, endif, switch, etc.
+syn match bmxConditional '\<\(If\s\+\|Else\)'
+syn match bmxConditional '\<\(Else\s*If\|End\s*Select\|Select\|End\s*If\|Then\)\>'
+syn keyword bmxConditional And Not
+
+" Repeat			for, do, while, etc.
+syn match bmxRepeat '\<\(While\|WEnd\|For\|Next\|Exit\|To\|Until\|Step\|EachIn\|Continue\|Repeat\|Until\|Forever\)\>'
+
+" Label				case, default, etc.
+syn match bmxLabel '^\s*\(Case\s\+\|Default\s*\>\)'
+
+" Operator			"sizeof", "+", "*", etc.
+syn match bmxOperator "\(\.\|,\|\:\|=\|+\|-\|*\|/\|\~\|\^\|<\|>\)"
+
+" Exception			try, catch, throw
+syn match bmxException '\<\(Try\|Catch\|End\s*Try\)\>'
+
+" PreProc			generic Preprocessor
+syn match bmxPreProc '^\s*?\.*'
+
+" Include			preprocessor #include
+syn match bmxInclude '^\s*\<\(Framework\|Include\|Import\|Incbin\)\>'
+
+" Define			preprocessor #define
+" Macro				same as Define
+
+" PreCondit			preprocessor #if, #else, #endif, etc.
+syn match bmxPreCondit '^\s*?\(Not\)'
+
+" Type				int, long, char, etc.
+syn match bmxType "\w*\(\:\s*\)\@<=\(\w\+\)"
+syn match bmxType "\(^\s*Type\s*\)\@<=\w\+"
+syn match bmxType "\(\:\)\@<!\(\w\+\)\@<=\s*\(%\|#\|!\|\$\)"
+syn match bmxType "\(New\|Implements\|Extends\)\@<=\s\+\w*"
+
+" StorageClass		static, register, volatile, etc.
+
+" Structure			struct, union, enum, etc.
+
+" Typedef			A typedef
+
+" Special			any special symbol
+" SpecialChar		special character in a constant
+" Tag				you can use CTRL-] on this
+
+" Delimiter			character that needs attention
+" Comment
+syn match bmxComment "'.*" contains=bmxTodo,bmxUnderlined
+syn region bmxComment start="^\s*Rem\(\s\+\w*\|$\)" end="^\s*End\s*Rem\>" contains=bmxTodo,bmxUnderlined
+
+" SpecialComment	special things inside a comment
+" what skin even highlight 'SpecialComment'?!
+" let's just use Todo instead...
+syn match bmxTodo '\(\(^\|\'\)\s*\)\@<=\w\+:'me=e-1 contained
+
+" Debug				debugging statements
+syn keyword bmxDebug DebugStop DebugLog RuntimeError Assert
+
+" Underlined		text that stands out, HTML links
+" Ignore			left blank, hidden  |hl-Ignore|
+" Error				any erroneous construct
+
+" Todo				anything that needs extra attention; mostly the keywords TODO FIXME and XXX
+syn match bmxTodo '\<\(TODO\|BUG\|FIXME\)\>'
+
+" Default highlighting
+hi def link bmxConstant			Constant
+hi def link bmxString			String
+hi def link bmxCharacter		Character
+hi def link bmxNumber			Number
+hi def link bmxBoolean			Boolean
+hi def link bmxFloat			Float
+hi def link bmxIdentifier		Identifier
+hi def link bmxFunction			Function
+hi def link bmxStatement		Statement
+hi def link bmxConditional		Conditional
+hi def link bmxRepeat			Repeat
+hi def link bmxLabel			Label
+hi def link bmxOperator			Operator
+hi def link bmxKeyword			Keyword
+hi def link bmxException		Exception
+hi def link bmxPreProc			PreProc
+hi def link bmxInclude			Include
+hi def link bmxDefine			Define
+hi def link bmxMacro			Macro
+hi def link bmxPreCondit		PreCondit
+hi def link bmxType				Type
+hi def link bmxStorageClass		StorageClass
+hi def link bmxStructure		Structure
+hi def link bmxTypedef			Typedef
+hi def link bmxSpecial			Special
+hi def link bmxSpecialChar		SpecialChar
+hi def link bmxTag				Tag
+hi def link bmxDelimiter		Delimiter
+hi def link bmxComment			Comment
+hi def link bmxSpecialComment	SpecialComment
+hi def link bmxDebug			Debug
+hi def link bmxUnderlined		Underlined
+hi def link bmxIgnore			Ignore
+hi def link bmxError			Error
+hi def link bmxTodo				Todo
+
+hi def link bmxKeywordError		Error
+
+let b:current_syntax = "bmx"
+
+let &cpo = s:cpo_save
+unlet s:cpo_save
+" vim: ts=8
