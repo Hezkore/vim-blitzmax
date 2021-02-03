@@ -20,7 +20,7 @@ Alternatively you can read the online documentations at [vimhelp.org](https://vi
 Opening a `.bmx` file will set the Vim compiler to `bmk`\
 You manually set it if needed with  the command `:compiler bmk`\
 Use the command `:make <blitzmax bmk operation> [blitzmax bmk options]` to build your executable.\
-For example `:make makeapp -x %` to compile the current file (`%`) and execute it (`-x`).
+For example `:make makeapp -x %` to compile the current file _(`%`)_ and execute it _(`-x`)_.
 
 Or something more advanced `:make makeapp -d -t console -w -a -x -o %<.debug %`\
 This will create a debug console application.
@@ -62,7 +62,7 @@ You can read more about Vim tags [here](https://vimhelp.org/tagsrch.txt.html).
 * **Q: I'm getting `Error creating Ctags!` when creating ctags.**
 	* A: The `MakeBmxCtags` commands relies on the external program 'ctags', which you can find [here](https://github.com/universal-ctags/ctags#universal-ctags).
 * **Q: The compiler, tagbar and ctags don't match/update with my code.**
-	* A: The document is read from disk, you'll have to save (`:w`) first!
+	* A: The document is read from disk, you'll have to save _(`:w`)_ first!
 * **Q: Jumping to a tag jumps to the wrong location.**
 	* A: You can press `g ]` to view multiple tag matches.\
 	You can read more about Vim tags [here](https://vimhelp.org/tagsrch.txt.html).
@@ -71,7 +71,7 @@ You can read more about Vim tags [here](https://vimhelp.org/tagsrch.txt.html).
 	Alternatively, use `Ctr-W ]` or `Ctrl-W g ]` to open the tag in a split view.\
 	You can read more about Vim tags [here](https://vimhelp.org/tagsrch.txt.html).
 * **Q: Tags from my modules aren't matched.**
-	* A: Make sure you've added `exe 'set tags+='.g:blitzmax_path.'/mod/tags'` to your `vimrc` file.
+	* A: Make sure you've added `exe 'set tags+='.g:blitzmax_path.'/mod/tags'` to your `vimrc` file, and that you've called `:MakeBmxModuleCtags` at least once.
 * **Q: I'm getting `Undefined variable: g:blitzmax_path` at start.**
 	* A: If you've added `exe 'set tags+='.g:blitzmax_path.'/mod/tags'` to your `vimrc` file, then make sure it's entered _after/below_ the `let g:blitzmax_path=<your blitzmax path>` line.
 * **Q: I'm having other issues with the plugin.**
