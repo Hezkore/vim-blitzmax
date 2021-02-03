@@ -2,12 +2,12 @@
 
 [Vim](https://www.vim.org) plugin that provides [syntax highlighting](https://vimhelp.org/syntax.txt.html#%3Asyn-qstart), indentation, [error matching](https://vimhelp.org/quickfix.txt.html#quickfix-window), [Ctags](https://vimhelp.org/tagsrch.txt.html#tag-commands), [tagbar scopes](https://github.com/preservim/tagbar) and [compiler options](https://vimhelp.org/quickfix.txt.html#%3Amake_makeprg) for [BlitzMax](https://blitzmax.org).
 
-![Title Image](https://github.com/Hezkore/vim-blitzmax-support/blob/main/demo.png?raw=true)
+![Title Image](https://github.com/Hezkore/vim-blitzmax/blob/main/demo.png?raw=true)
 
 ## Installation
 | Method        | Instructions
 | ------------- | ------
-| Vim 8 package | `git clone https://github.com/Hezkore/vim-blitzmax-support ~/.vim/pack/hezkore/start/bmx`
+| Vim 8 package | `git clone https://github.com/Hezkore/vim-blitzmax ~/.vim/pack/hezkore/start/bmx`
 | Manual        | Copy files to `~/.vim/` on Unix or `%USERPROFILE%\vimfiles\` on Windows
 
 Open or create the `vimrc` file in `~/.vim/` on Unix or `%USERPROFILE%\vimfiles\` on Windows and add `let g:blitzmax_path=<your blitzmax path>`
@@ -75,4 +75,4 @@ You can read more about Vim tags [here](https://vimhelp.org/tagsrch.txt.html).
 * **Q: I'm getting `Undefined variable: g:blitzmax_path` at start.**
 	* A: If you've added `exe 'set tags+='.g:blitzmax_path.'/mod/tags'` to your `vimrc` file, then make sure it's entered _after/below_ the `let g:blitzmax_path=<your blitzmax path>` line.
 * **Q: I'm having other issues with the plugin.**
-	* A: Post your issue in the [GitHub issues](https://github.com/Hezkore/vim-blitzmax-support/issues) section.
+	* A: Post your issue in the [GitHub issues](https://github.com/Hezkore/vim-blitzmax/issues) section.
