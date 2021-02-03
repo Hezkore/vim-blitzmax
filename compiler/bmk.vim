@@ -6,14 +6,19 @@
 if exists('current_compiler')
 	finish
 endif
-let current_compiler = 'bmk'
 
-if exists(':CompilerSet') != 2
-	command -nargs=* CompilerSet setlocal <args>
+" Test if the BlitzMax path is correct
+if exists('g:blitzmax_path')==0
+	echoh WarningMsg
+	echom 'The BlitzMax path has not been set'
+	echoh None
+	finish
 endif
 
-CompilerSet makeprg=bmk\ $*
-CompilerSet errorformat=
+let current_compiler = 'bmk'
+
+execute "setlocal makeprg=".g:blitzmax_path.'/bin/bmk\ $*'
+setlocal errorformat=
 	\%ACompile\ \%t%\\w%\\+\:\ \%m,
 	\%C\[\%f\;\%l\;\%c\],\%Z,
 	\%-G\%.\%#

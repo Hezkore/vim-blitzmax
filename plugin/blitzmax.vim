@@ -4,7 +4,32 @@
 " Last Change: 2021
 " Description: Basic CTags/Tagbar support
 
-" Tagbar definition for BlitzMax 
+" Make BlitzMax specific CTags
+command! MakeBmxModuleCtags :call MakeBmxCtags(g:blitzmax_path.'/mod')
+command! -nargs=? MakeBmxCtags :call MakeBmxCtags(<f-args>)
+function! MakeBmxCtags(...)
+	let l:path = a:0 >= 1 ? a:1 : expand("%:p:h")
+	silent execute('!ctags -f '.l:path.'/tags
+\	--langdef=blitzmax --langmap=blitzmax:.bmx
+\	--regex-blitzmax=/^\\s*Type\\s+\(\[a-zA-Z0-9_\]+\)/\\1/t,Type/,i
+\	--regex-blitzmax=/^\\s*Struct\\s+\(\[a-zA-Z0-9_\]+\)/\\1/s,Struct/,i
+\	--regex-blitzmax=/^\\s*Enum\\s+\(\[a-zA-Z0-9_\]+\)/\\1/e,Enum/,i
+\	--regex-blitzmax=/^\\s*Const\\s+\(\[a-zA-Z0-9_\]+\)/\\1/c,Constants/,i
+\	--regex-blitzmax=/^\\s*Global\\s+\(\[a-zA-Z0-9_\]+\)/\\1/g,Globals/,i
+\	--regex-blitzmax=/^\\s*Field\\s+\(\[a-zA-Z0-9_\]+\)/\\1/i,Fields/,i
+\	--regex-blitzmax=/^\\s*Method\\s+\(\[a-zA-Z0-9_\]+\)/\\1/m,Method/,i
+\	--regex-blitzmax=/^\\s*Function\\s+\(\[a-zA-Z0-9_\]+\)/\\1/f,Function/,i
+\	--languages=blitzmax
+\	-R '.l:path)
+	redraw!
+	if v:shell_error
+		echom 'Error creating Ctags! Make sure you have CTags installed'
+	else
+		echom 'Created Ctags for '.l:path
+	endif
+endfunction
+
+" Tagbar definition for BlitzMax
 let g:tagbar_type_blitzmax = {
 \	'ctagstype' : 'blitzmax',
 \	'kinds' : [
