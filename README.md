@@ -48,7 +48,7 @@ The internal BlitzMax debugger is used for live-debugging.
 | Dxxxxxxxx | Dump object at hex address xxxxxxxx
 
 ## Ctags and tagbar
-The [tagbar](https://github.com/preservim/tagbar) extension is supported right out of the box.
+The [tagbar plugin](https://github.com/preservim/tagbar) is supported right out of the box.
 
 ![Tagbar Image](https://github.com/Hezkore/vim-blitzmax/blob/main/demo.png?raw=true)
 
