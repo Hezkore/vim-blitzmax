@@ -2,8 +2,6 @@
 
 [Vim](https://www.vim.org) plugin that provides [syntax highlighting](https://vimhelp.org/syntax.txt.html#%3Asyn-qstart), indentation, [error matching](https://vimhelp.org/quickfix.txt.html#quickfix-window), [Ctags](https://vimhelp.org/tagsrch.txt.html#tag-commands), [tagbar scopes](https://github.com/preservim/tagbar) and [compiler options](https://vimhelp.org/quickfix.txt.html#%3Amake_makeprg) for [BlitzMax](https://blitzmax.org).
 
-![Title Image](https://github.com/Hezkore/vim-blitzmax/blob/main/demo.png?raw=true)
-
 ![Tag Image](https://github.com/Hezkore/vim-blitzmax/blob/main/demo.gif?raw=true)
 
 ## Installation
@@ -50,6 +48,8 @@ The internal BlitzMax debugger is used for live-debugging.
 
 ## Ctags and tagbar
 The [tagbar](https://github.com/preservim/tagbar) extension is supported right out of the box.
+
+![Tagbar Image](https://github.com/Hezkore/vim-blitzmax/blob/main/demo.png?raw=true)
 
 You can generate your own ctags with the command `:MakeBmxCtags`\
 This will generate ctags for the file in the current buffer, files in the same folder, as well as sub-folders.\
