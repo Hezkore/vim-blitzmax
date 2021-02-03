@@ -4,6 +4,8 @@
 
 ![Title Image](https://github.com/Hezkore/vim-blitzmax/blob/main/demo.png?raw=true)
 
+![Tag Image](https://github.com/Hezkore/vim-blitzmax/blob/main/demo.gif?raw=true)
+
 ## Installation
 | Method        | Instructions
 | ------------- | ------
