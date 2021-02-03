@@ -10,7 +10,8 @@
 | Vim 8 package | `git clone https://github.com/Hezkore/vim-blitzmax ~/.vim/pack/hezkore/start/bmx`
 | Manual        | Copy files to `~/.vim/` on Unix or `%USERPROFILE%\vimfiles\` on Windows
 
-Open or create the `vimrc` file in `~/.vim/` on Unix or `%USERPROFILE%\vimfiles\` on Windows and add `let g:blitzmax_path=<your blitzmax path>`
+Open or create the `vimrc` file in `~/.vim/` on Unix or `%USERPROFILE%\vimfiles\` on Windows and add\
+`let g:blitzmax_path=<your blitzmax path>`
 
 ## Learning Vim
 Install [Vim](https://www.vim.org/download.php) and run the [vimtutor](https://vimhelp.org/usr_01.txt.html#vimtutor).\
@@ -18,7 +19,7 @@ Alternatively you can read the online documentations at [vimhelp.org](https://vi
 
 ## Compiling
 Opening a `.bmx` file will set the Vim compiler to `bmk`\
-You manually set it if needed with  the command `:compiler bmk`\
+You can manually set it if needed with  the command `:compiler bmk`\
 Use the command `:make <blitzmax bmk operation> [blitzmax bmk options]` to build your executable.\
 For example `:make makeapp -x %` to compile the current file _(`%`)_ and execute it _(`-x`)_.
 
