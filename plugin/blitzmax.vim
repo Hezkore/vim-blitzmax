@@ -23,7 +23,9 @@ function! MakeBmxCtags(...)
 \	-R '.l:path)
 	redraw!
 	if v:shell_error
+		echoh WarningMsg
 		echom 'Error creating Ctags! Make sure you have CTags installed'
+		echoh None
 	else
 		echom 'Created Ctags for '.l:path
 	endif
