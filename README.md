@@ -26,7 +26,7 @@ For example `:make makeapp -x %` to compile the current file _(`%`)_ and execute
 Or something more advanced `:make makeapp -d -t console -w -a -x -o %<.debug %`\
 This will create a debug console application.
 
-Add `nnoremap <F5> :make makeapp -d -t console -w -a -x -o %<.debug %<CR>` to your `vimrc` for a quick way of compiling a debug console application.
+Add `nnoremap <F5> :make makeapp -d -t console -w -a -x -o %<.debug %<CR>` to your `vimrc` for a quick way of compiling a debug console application by pressing <kbd>F5</kbd>.
 
 You can read more about the BlitzMax bmk compile operations and options [here](https://blitzmax.org/docs/en/tools/bmk/), and about Vim's `make` command [here](https://vimhelp.org/quickfix.txt.html#%3Amake_makeprg).
 
@@ -67,11 +67,11 @@ You can read more about Vim tags [here](https://vimhelp.org/tagsrch.txt.html).
 * **Q: The compiler, tagbar and ctags don't match/update with my code.**
 	* A: The document is read from disk, you'll have to save _(`:w`)_ first!
 * **Q: Jumping to a tag jumps to the wrong location.**
-	* A: You can press `g ]` to view multiple tag matches.\
+	* A: You can press <kbd>g</kbd> <kbd>]</kbd> to view multiple tag matches.\
 	You can read more about Vim tags [here](https://vimhelp.org/tagsrch.txt.html).
 * **Q: Jumping to a tag makes me lose my current document.**
-	* A: You can use `Ctr-t` to jump a step back in the tag stack.\
-	Alternatively, use `Ctr-W ]` or `Ctrl-W g ]` to open the tag in a split view.\
+	* A: You can use <kbd>Ctr</kbd> + <kbd>t</kbd> to jump a step back in the tag stack.\
+	Alternatively, use <kbd>Ctr</kbd> + <kbd>W</kbd> <kbd>]</kbd> or <kbd>Ctrl</kbd> + <kbd>W</kbd> <kbd>g</kbd> <kbd>]</kbd> to open the tag in a split view.\
 	You can read more about Vim tags [here](https://vimhelp.org/tagsrch.txt.html).
 * **Q: Tags from my modules aren't matched.**
 	* A: Make sure you've added `exe 'set tags+='.g:blitzmax_path.'/mod/tags'` to your `vimrc` file, and that you've called `:MakeBmxModuleCtags` at least once.
