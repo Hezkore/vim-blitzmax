@@ -8,6 +8,7 @@
 | Method        | Instructions
 | ------------- | ------
 | Vim 8 package | `git clone https://github.com/Hezkore/vim-blitzmax ~/.vim/pack/hezkore/start/bmx`
+| [vim-plug](https://github.com/junegunn/vim-plug) | Plug 'Hezkore/vim-blitzmax', { 'for': 'blitzmax' }
 | Manual        | Copy files to `~/.vim/` on Unix or `%USERPROFILE%\vimfiles\` on Windows
 
 Open or create the `vimrc` file in `~/.vim/` on Unix or `%USERPROFILE%\vimfiles\` on Windows and add\
