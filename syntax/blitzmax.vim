@@ -57,7 +57,7 @@ syn match bmxFunction "\(New\s\+\w*\)\@<!\w*\s*\(\(\:\s*\w\+\|%\|#\|!\|\$\)\s*(\
 " Conditional		if, then, else, endif, switch, etc.
 syn match bmxConditional '\<\(If\s\+\|Else\)'
 syn match bmxConditional '\<\(Else\s*If\|End\s*Select\|Select\|End\s*If\|Then\)\>'
-syn keyword bmxConditional And Not
+syn keyword bmxConditional And Not Or
 
 " Repeat			for, do, while, etc.
 syn match bmxRepeat '\<\(While\|WEnd\|For\|Next\|Exit\|To\|Until\|Step\|EachIn\|Continue\|Repeat\|Until\|Forever\)\>'
